@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zásady ochrany soukromí — Movly</title>
+<meta name="description" content="Zásady ochrany soukromí aplikace Movly — jaká data sbíráme, jak je používáme a jak požádat o smazání účtu." />
+<meta name="theme-color" content="#0A0A12" />
+<link rel="icon" type="image/svg+xml" href="assets/movly-icon.svg" />
+<style>
+  :root{
+    --bg-base:#0A0A12;--bg-surface:#14141F;--bg-raised:#1C1C2A;
+    --stroke:rgba(255,255,255,.08);
+    --text-primary:#FFFFFF;--text-secondary:#A0A0B2;--text-tertiary:#6C6C7E;
+    --violet-light:#A78BFA;--violet:#8B5CF6;--pink:#EC4899;
+    --grad-brand:linear-gradient(135deg,#A78BFA 0%,#8B5CF6 50%,#EC4899 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,system-ui,sans-serif;
+    background:var(--bg-base);color:var(--text-secondary);line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--violet-light);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .glow{position:fixed;border-radius:50%;filter:blur(120px);z-index:0;pointer-events:none}
+  .glow-1{top:-220px;left:-120px;width:520px;height:520px;background:radial-gradient(circle,#7C3AED,transparent 70%);opacity:.4}
+
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(10,10,18,.72);border-bottom:1px solid var(--stroke)}
+  nav{max-width:840px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.5px;color:#fff}
+  .brand svg{height:30px;width:auto;display:block}
+  .back{color:var(--text-secondary);font-size:15px;font-weight:500}
+  .back:hover{color:#fff;text-decoration:none}
+
+  main{max-width:840px;margin:0 auto;padding:56px 24px 80px;position:relative;z-index:1}
+  h1{color:#fff;font-size:clamp(32px,5vw,46px);font-weight:900;letter-spacing:-1.2px;margin-bottom:10px}
+  .updated{color:var(--text-tertiary);font-size:14px;margin-bottom:8px}
+  .lede{font-size:18px;color:var(--text-secondary);margin:22px 0 40px}
+  h2{
+    color:#fff;font-size:22px;font-weight:800;letter-spacing:-.4px;
+    margin:42px 0 14px;padding-top:28px;border-top:1px solid var(--stroke);
+  }
+  h2 .grad-text{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  p{margin-bottom:14px}
+  ul{margin:0 0 18px;padding-left:22px}
+  li{margin-bottom:9px}
+  strong{color:#fff;font-weight:600}
+  .box{background:var(--bg-surface);border:1px solid var(--stroke);border-radius:16px;padding:22px 26px;margin:18px 0}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--stroke);vertical-align:top}
+  th{color:#fff;font-weight:700;background:var(--bg-surface)}
+  td:first-child{color:#fff;font-weight:500;white-space:nowrap}
+  footer{border-top:1px solid var(--stroke);text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:13px;position:relative;z-index:1}
+</style>
+</head>
+<body>
+<div class="glow glow-1"></div>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="bm" x1="300" y1="280" x2="724" y2="744" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#A78BFA"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/>
+        </linearGradient></defs>
+        <path d="M 304 752 L 304 300 L 512 540 L 720 300 L 720 752" fill="none" stroke="url(#bm)" stroke-width="132" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span>Movly</span>
+    </a>
+    <a class="back" href="index.html">← Zpět na web</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Zásady ochrany soukromí</h1>
+  <p class="updated">Naposledy aktualizováno: 17. června 2026</p>
+
+  <p class="lede">Tyto zásady popisují, jaké údaje aplikace <strong>Movly</strong> („aplikace", „my") shromažďuje, jak s nimi nakládá a jaká máš jako uživatel práva. Soukromí bereme vážně — sbíráme jen to, co je nutné pro fungování aplikace, a tvá data nikdy neprodáváme.</p>
+
+  <h2>Jaké údaje zpracováváme</h2>
+  <p>Movly je společník pro filmy a seriály — pomáhá ti sledovat, co chceš vidět, spravovat seznamy a playlisty, pouštět trailery a mít přehled o dostupnosti titulů. K tomu zpracováváme tyto údaje:</p>
+
+  <table>
+    <tr><th>Kategorie</th><th>Co to obsahuje</th><th>Proč</th></tr>
+    <tr><td>Údaje účtu</td><td>E-mailová adresa a heslo (uložené v zabezpečené, hašované podobě)</td><td>Vytvoření účtu, přihlášení a synchronizace dat mezi zařízeními</td></tr>
+    <tr><td>Tvůj obsah</td><td>Seznamy, playlisty, oblíbené tituly a postup ve sledování (co máš za sebou)</td><td>Aby tě tvé seznamy a postup následovaly na všech zařízeních</td></tr>
+    <tr><td>Profily</td><td>Názvy profilů, které si v rámci účtu vytvoříš</td><td>Oddělení seznamů a postupu pro jednotlivé členy rodiny</td></tr>
+    <tr><td>Diagnostika zařízení</td><td>Typ zařízení, schopnosti přehrávání a orientační rychlost připojení</td><td>Optimalizace zobrazení a kvality přehrávaných upoutávek</td></tr>
+    <tr><td>Provozní data</td><td>Záznamy o chybách a základní technické logy</td><td>Hledání a oprava chyb, stabilita aplikace</td></tr>
+  </table>
+
+  <div class="box">
+    <p style="margin:0"><strong>Co Movly nedělá:</strong> neprodáváme ani nepronajímáme tvé osobní údaje třetím stranám, nepoužíváme je k cílené reklamě a neshromažďujeme přesnou polohu, kontakty ani obsah z jiných aplikací.</p>
+  </div>
+
+  <h2>Údaje ukládané jen v zařízení</h2>
+  <p>Některé údaje zůstávají pouze ve tvém zařízení a neodesílají se na naše servery:</p>
+  <ul>
+    <li><strong>Historie hledání</strong> — pro rychlejší opakované vyhledávání. Můžeš ji kdykoli smazat v aplikaci.</li>
+    <li><strong>Nastavení a předvolby</strong> — např. zvolený jazyk a způsob zobrazení.</li>
+  </ul>
+
+  <h2>Služby třetích stran</h2>
+  <p>Aby Movly fungoval, využívá několik externích služeb. Doporučujeme seznámit se i s jejich zásadami:</p>
+  <ul>
+    <li><strong>TMDB (The Movie Database)</strong> — zdroj metadat, plakátů, obrázků a informací o titulech. Tento produkt používá TMDB API, ale není jím schválen ani certifikován.</li>
+    <li><strong>Poskytovatel infrastruktury (CDN / měření připojení)</strong> — pro doručování obsahu a orientační měření rychlosti připojení.</li>
+  </ul>
+  <p>Movly může obsahovat odkazy na weby třetích stran. Nemáme kontrolu nad jejich obsahem ani zásadami ochrany soukromí a neneseme za ně odpovědnost.</p>
+
+  <h2>Oprávnění aplikace</h2>
+  <p>Aplikace může vyžadovat tato oprávnění:</p>
+  <ul>
+    <li><strong>Přístup k internetu</strong> — nezbytný pro načítání informací o filmech a seriálech a přehrávání upoutávek.</li>
+    <li><strong>Síťový stav</strong> — pro přizpůsobení kvality podle dostupného připojení.</li>
+  </ul>
+
+  <h2>Uchovávání údajů</h2>
+  <p>Údaje spojené s tvým účtem uchováváme po dobu, po kterou je účet aktivní. Po zrušení účtu je odstraníme v souladu s částí níže.</p>
+
+  <h2>Soukromí dětí</h2>
+  <p>Služba není určena osobám mladším 13 let a vědomě od nich neshromažďujeme osobní údaje. Pokud jsi rodič nebo opatrovník a domníváš se, že nám tvé dítě poskytlo osobní údaje, kontaktuj nás a my je odstraníme.</p>
+
+  <h2 id="smazani"><span class="grad-text">Smazání účtu a údajů</span></h2>
+  <p>Své údaje můžeš spravovat přímo v aplikaci. Pokud chceš zrušit účet a smazat všechna související data, napiš nám na e-mail <a href="mailto:sebesta.jan@gmail.com?subject=Movly%20–%20žádost%20o%20smazání%20účtu">sebesta.jan@gmail.com</a> s předmětem <strong>„Žádost o smazání účtu"</strong> a uveď svou registrační e-mailovou adresu. Žádost zpracujeme a údaje smažeme do 30 dnů.</p>
+
+  <h2>Změny těchto zásad</h2>
+  <p>Tyto zásady můžeme čas od času aktualizovat. O změnách tě budeme informovat zveřejněním nové verze na této stránce s aktualizovaným datem.</p>
+
+  <h2>Kontakt</h2>
+  <p>Máš-li jakékoli dotazy k těmto zásadám ochrany soukromí, ozvi se nám:</p>
+  <ul>
+    <li>E-mailem: <a href="mailto:sebesta.jan@gmail.com">sebesta.jan@gmail.com</a></li>
+  </ul>
+</main>
+
+<footer>
+  © 2026 Movly. Tvůj filmový a seriálový společník.
+</footer>
+</body>
+</html>

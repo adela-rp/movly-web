@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brand" x1="300" y1="280" x2="724" y2="744" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.5" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+  <!-- Transparent-background M mark, for monochrome/in-app use -->
+  <path d="M 304 752 L 304 300 L 512 540 L 720 300 L 720 752"
+        fill="none" stroke="url(#brand)"
+        stroke-width="132" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

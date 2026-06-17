@@ -1,0 +1,22 @@
+<svg width="720" height="200" viewBox="0 0 720 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brand" x1="40" y1="40" x2="680" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.5" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Geometric M mark (height 120) -->
+  <g transform="translate(48,40)">
+    <path d="M 13.6 106.4 L 13.6 13.6 L 56.3 62.9 L 99.0 13.6 L 99.0 106.4"
+          fill="none" stroke="url(#brand)" stroke-width="27.1"
+          stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+
+  <!-- Wordmark: SF Pro Rounded with graceful fallbacks -->
+  <text x="196" y="138"
+        font-family="'SF Pro Rounded','SF Pro Display','Arial Rounded MT Bold','Nunito',system-ui,sans-serif"
+        font-size="128" font-weight="900" letter-spacing="-2"
+        fill="url(#brand)">Movly</text>
+</svg>

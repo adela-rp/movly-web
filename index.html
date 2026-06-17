@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Movly — tvůj filmový a seriálový společník</title>
+<meta name="description" content="Movly je prémiový tmavý společník pro filmy a seriály. Sleduj, co chceš vidět, spravuj seznamy, tvoř playlisty, pouštěj trailery a měj přehled, kde se dá co sledovat — na Apple, Androidu i Windows." />
+<meta name="theme-color" content="#0A0A12" />
+<link rel="icon" type="image/svg+xml" href="assets/movly-icon.svg" />
+<meta property="og:title" content="Movly — tvůj filmový a seriálový společník" />
+<meta property="og:description" content="Sleduj filmy a seriály, spravuj seznamy a playlisty, pouštěj trailery a zjisti, kde se dá co sledovat. Apple · Android · Windows." />
+<meta property="og:type" content="website" />
+<style>
+  :root{
+    --bg-base:#0A0A12;
+    --bg-surface:#14141F;
+    --bg-raised:#1C1C2A;
+    --stroke:rgba(255,255,255,.08);
+    --stroke-strong:rgba(255,255,255,.14);
+    --text-primary:#FFFFFF;
+    --text-secondary:#A0A0B2;
+    --text-tertiary:#6C6C7E;
+    --violet-light:#A78BFA;
+    --violet:#8B5CF6;
+    --fuchsia:#C026D3;
+    --pink:#EC4899;
+    --success:#34D399;
+    --grad-brand:linear-gradient(135deg,#A78BFA 0%,#8B5CF6 50%,#EC4899 100%);
+    --maxw:1120px;
+    --radius:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro","Segoe UI",Roboto,system-ui,sans-serif;
+    background:var(--bg-base);
+    color:var(--text-primary);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .grad-text{
+    background:var(--grad-brand);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+
+  /* scroll reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Ambient cinematic glow */
+  .glow{position:fixed;border-radius:50%;filter:blur(120px);z-index:0;pointer-events:none;opacity:.5}
+  .glow-1{top:-200px;left:-120px;width:560px;height:560px;background:radial-gradient(circle,#7C3AED,transparent 70%)}
+  .glow-2{top:420px;right:-180px;width:520px;height:520px;background:radial-gradient(circle,#EC4899,transparent 70%);opacity:.3}
+  .glow-3{top:1500px;left:-160px;width:480px;height:480px;background:radial-gradient(circle,#7C3AED,transparent 70%);opacity:.22}
+
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(10,10,18,.72);border-bottom:1px solid var(--stroke)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.5px}
+  .brand svg{height:30px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:var(--text-secondary);font-size:15px;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--text-primary)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;
+    padding:11px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;
+  }
+  .btn-primary{background:#fff;color:#0A0A12}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,255,255,.18)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:var(--stroke)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .btn-grad{background:var(--grad-brand);color:#fff}
+  .btn-grad:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(139,92,246,.45)}
+  @media(max-width:780px){.nav-links a:not(.btn){display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;z-index:1;padding:96px 0 56px;text-align:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--violet-light);
+    background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);padding:6px 14px;border-radius:999px;margin-bottom:28px;
+  }
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 10px var(--success)}
+  .hero h1{font-size:clamp(40px,6.5vw,72px);font-weight:900;letter-spacing:-2px;line-height:1.04;margin-bottom:22px}
+  .hero p.lead{max-width:620px;margin:0 auto 36px;font-size:clamp(17px,2.4vw,20px);color:var(--text-secondary)}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-note{margin-top:18px;font-size:13px;color:var(--text-tertiary)}
+
+  /* device mock */
+  .mock{position:relative;margin:64px auto 0;max-width:960px;z-index:1}
+  .mock-frame{
+    border-radius:20px;border:1px solid var(--stroke);overflow:hidden;
+    background:linear-gradient(180deg,#14141F,#0A0A12);
+    box-shadow:0 40px 120px -30px rgba(124,58,237,.45),0 0 0 1px rgba(255,255,255,.03);
+  }
+  .mock-bar{display:flex;align-items:center;gap:7px;padding:14px 16px;border-bottom:1px solid var(--stroke)}
+  .mock-bar i{width:11px;height:11px;border-radius:50%;background:#2a2a3a;display:inline-block}
+  .mock-bar i:nth-child(1){background:#ff5f57}.mock-bar i:nth-child(2){background:#febc2e}.mock-bar i:nth-child(3){background:#28c840}
+  .mock-body{padding:28px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .poster{aspect-ratio:2/3;border-radius:12px;border:1px solid var(--stroke);background:var(--bg-raised);position:relative;overflow:hidden}
+  .poster::after{content:"";position:absolute;inset:0;background:var(--grad-brand);opacity:.14}
+  .poster:nth-child(2n)::after{opacity:.22}
+  .poster:nth-child(3n)::after{background:linear-gradient(135deg,#3B82F6,#14B8A6);opacity:.18}
+  .mock-row-title{grid-column:1/-1;font-size:14px;font-weight:700;color:var(--text-secondary);margin:6px 0 -4px;text-align:left}
+  @media(max-width:680px){.mock-body{grid-template-columns:repeat(3,1fr)}}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{text-align:center;padding:26px 16px;background:var(--bg-surface);border:1px solid var(--stroke);border-radius:16px}
+  .stat .num{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1}
+  .stat .lbl{margin-top:8px;font-size:14px;color:var(--text-secondary)}
+
+  /* ---------- SECTION ---------- */
+  section{position:relative;z-index:1;padding:84px 0}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 56px}
+  .sec-head .kicker{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--violet-light);margin-bottom:14px}
+  .sec-head h2{font-size:clamp(30px,4.5vw,44px);font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+  .sec-head p{color:var(--text-secondary);font-size:17px}
+
+  /* features */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:880px){.features{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.features{grid-template-columns:1fr}}
+  .card{
+    background:var(--bg-surface);border:1px solid var(--stroke);border-radius:16px;padding:28px;
+    transition:transform .25s,border-color .25s,background .25s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.4);background:var(--bg-raised)}
+  .card .ico{
+    width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+    background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.28);margin-bottom:18px;
+  }
+  .card .ico svg{width:24px;height:24px;stroke:var(--violet-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:18px;font-weight:700;margin-bottom:9px}
+  .card p{color:var(--text-secondary);font-size:15px}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{position:relative;background:var(--bg-surface);border:1px solid var(--stroke);border-radius:16px;padding:30px 28px}
+  .step .n{font-size:54px;font-weight:900;line-height:.8;letter-spacing:-2px;margin-bottom:18px;display:inline-block}
+  .step h3{font-size:18px;font-weight:700;margin-bottom:9px}
+  .step p{color:var(--text-secondary);font-size:15px}
+
+  /* showcase split */
+  .split{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+  @media(max-width:880px){.split{grid-template-columns:1fr;gap:36px}}
+  .split h2{font-size:clamp(28px,4vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:18px}
+  .split .kicker{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--violet-light);margin-bottom:14px}
+  .checklist{list-style:none;margin-top:22px;display:grid;gap:14px}
+  .checklist li{display:flex;gap:12px;align-items:flex-start;color:var(--text-secondary);font-size:16px}
+  .checklist .ck{flex:0 0 22px;width:22px;height:22px;border-radius:7px;background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.35);display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .checklist .ck svg{width:13px;height:13px;stroke:var(--success);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .checklist strong{color:#fff;font-weight:600}
+
+  /* phone mock for split */
+  .phone{justify-self:center;width:280px;max-width:100%;border-radius:34px;border:1px solid var(--stroke-strong);background:linear-gradient(180deg,#14141F,#0A0A12);padding:12px;box-shadow:0 40px 100px -30px rgba(124,58,237,.5)}
+  .phone .scr{border-radius:24px;overflow:hidden;border:1px solid var(--stroke);background:var(--bg-base)}
+  .phone .hero-img{height:150px;background:linear-gradient(135deg,#8B5CF6,#EC4899);position:relative}
+  .phone .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,18,.9))}
+  .phone .hero-img .b{position:absolute;left:14px;bottom:14px;z-index:2}
+  .phone .hero-img .t{display:block;font-weight:800;font-size:17px}
+  .phone .hero-img .s{display:block;font-size:11px;color:rgba(255,255,255,.8);margin-top:2px}
+  .phone .pgrid{padding:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .phone .pp{aspect-ratio:2/3;border-radius:9px;background:var(--bg-raised);position:relative;overflow:hidden}
+  .phone .pp::after{content:"";position:absolute;inset:0;background:var(--grad-brand);opacity:.16}
+  .phone .pp:nth-child(3n)::after{background:linear-gradient(135deg,#3B82F6,#14B8A6);opacity:.18}
+  .phone .rowlbl{font-size:12px;font-weight:700;color:var(--text-secondary);padding:2px 14px}
+
+  /* real screenshots */
+  .shot-frame{border-radius:14px;overflow:hidden;border:1px solid var(--stroke-strong);line-height:0;
+    box-shadow:0 40px 120px -30px rgba(124,58,237,.5),0 0 0 1px rgba(255,255,255,.03)}
+  .shot-frame img{width:100%;height:auto;display:block}
+  .phone-bezel{justify-self:center;width:270px;max-width:78vw;border-radius:42px;padding:9px;
+    background:linear-gradient(160deg,#26263400,#1b1b26);border:1px solid var(--stroke-strong);line-height:0;
+    box-shadow:0 40px 100px -28px rgba(124,58,237,.55)}
+  .phone-bezel img{width:100%;height:auto;display:block;border-radius:34px}
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:1.55fr .8fr;gap:36px;align-items:center}
+  @media(max-width:880px){.gallery{grid-template-columns:1fr;gap:30px;justify-items:center}}
+
+  /* platforms */
+  .platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:880px){.platforms{grid-template-columns:1fr}}
+  .plat{
+    background:linear-gradient(180deg,var(--bg-surface),var(--bg-base));
+    border:1px solid var(--stroke);border-radius:20px;padding:32px;text-align:center;transition:transform .25s,border-color .25s;
+  }
+  .plat:hover{transform:translateY(-4px);border-color:var(--stroke-strong)}
+  .plat .pico{width:56px;height:56px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center}
+  .plat .pico svg{width:44px;height:44px;fill:#fff}
+  .plat h3{font-size:20px;font-weight:800;margin-bottom:8px}
+  .plat .devs{color:var(--text-secondary);font-size:15px;margin-bottom:18px;min-height:44px}
+  .plat .badge{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--success);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);padding:6px 13px;border-radius:999px}
+  .plat .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--success)}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+  details{background:var(--bg-surface);border:1px solid var(--stroke);border-radius:14px;padding:4px 22px;transition:border-color .2s}
+  details[open]{border-color:rgba(139,92,246,.35)}
+  summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary .chev{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--violet-light);transition:transform .25s;font-size:18px}
+  details[open] summary .chev{transform:rotate(45deg)}
+  details p{color:var(--text-secondary);font-size:15px;padding:0 0 20px;margin:0}
+
+  /* about / cta band */
+  .band{background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(236,72,153,.1));border:1px solid var(--stroke);border-radius:var(--radius);padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+  .band::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(circle,rgba(139,92,246,.4),transparent 70%);filter:blur(40px)}
+  .band > *{position:relative;z-index:1}
+  .band h2{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+  .band p{color:var(--text-secondary);max-width:560px;margin:0 auto 30px;font-size:17px}
+
+  /* footer */
+  footer{border-top:1px solid var(--stroke);padding:56px 0 40px;position:relative;z-index:1}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:40px}
+  @media(max-width:680px){.foot-top{grid-template-columns:1fr;gap:28px}}
+  .foot-col h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:16px}
+  .foot-col a{display:block;color:var(--text-secondary);font-size:15px;margin-bottom:10px;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-brand .brand{font-size:20px;margin-bottom:14px}
+  .foot-brand .brand svg{height:26px}
+  .foot-brand p{color:var(--text-secondary);font-size:15px;max-width:300px}
+  .foot-bottom{border-top:1px solid var(--stroke);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot-bottom p{color:var(--text-tertiary);font-size:13px}
+  .foot-bottom .legal a{color:var(--text-secondary);font-size:13px;margin-left:18px}
+  .foot-bottom .legal a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="bm" x1="300" y1="280" x2="724" y2="744" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#A78BFA"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/>
+        </linearGradient></defs>
+        <path d="M 304 752 L 304 300 L 512 540 L 720 300 L 720 752" fill="none" stroke="url(#bm)" stroke-width="132" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span>Movly</span>
+    </a>
+    <div class="nav-links">
+      <a href="#funkce">Funkce</a>
+      <a href="#jak-to-funguje">Jak to funguje</a>
+      <a href="#platformy">Platformy</a>
+      <a href="#nahledy">Náhledy</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-grad" href="#o-aplikaci">Brzy k dispozici</a>
+    </div>
+  </nav>
+</header>
+
+<a id="top"></a>
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <span class="pill reveal"><span class="dot"></span> Ve vývoji · Apple · Android · Windows</span>
+    <h1 class="reveal">Tvůj filmový a seriálový<br><span class="grad-text">společník</span></h1>
+    <p class="lead reveal">Movly drží tvůj filmový život pohromadě. Sleduj, co chceš vidět, spravuj seznamy, skládej playlisty, pouštěj trailery a měj přehled, kde se dá co sledovat — vše v jedné prémiové tmavé aplikaci, na všech tvých zařízeních.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="#platformy">Prozkoumat platformy</a>
+      <a class="btn btn-ghost" href="#funkce">Co Movly umí ▾</a>
+    </div>
+    <p class="hero-note reveal">Zatím v uzavřeném vývoji — spuštění se blíží.</p>
+
+    <!-- real screenshot: macOS home -->
+    <div class="mock reveal">
+      <div class="shot-frame">
+        <img src="assets/shots/mac-home.png" alt="Movly na Macu — domovská obrazovka s hero bannerem, kolekcemi a Top 10" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="padding-top:24px">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><div class="num grad-text">3</div><div class="lbl">platformy, jeden účet</div></div>
+        <div class="stat reveal"><div class="num grad-text">7</div><div class="lbl">typů zařízení</div></div>
+        <div class="stat reveal"><div class="num grad-text">∞</div><div class="lbl">seznamů a playlistů</div></div>
+        <div class="stat reveal"><div class="num grad-text">100&nbsp;%</div><div class="lbl">tmavý cinematický design</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="funkce">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Funkce</div>
+        <h2>Vše pro tvůj přehled na jednom místě</h2>
+        <p>Žádný chaos v záložkách a poznámkách. Movly ti dá pořádek v tom, co jsi viděl, co chceš vidět a kdy to vyjde.</p>
+      </div>
+      <div class="features">
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div>
+          <h3>Sledování filmů a seriálů</h3>
+          <p>Označ, co máš za sebou, a sleduj svůj postup epizodu po epizodě napříč seriály.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/><circle cx="19" cy="17" r="2.4"/></svg></div>
+          <h3>Seznamy a playlisty</h3>
+          <p>Skládej vlastní seznamy a tématické playlisty — „Na víkend", „Sci-fi klasika", cokoli tě napadne.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><polygon points="10 8 16 12 10 16 10 8"/><rect x="3" y="4" width="18" height="16" rx="3"/></svg></div>
+          <h3>Trailery na dotek</h3>
+          <p>Pusť si oficiální upoutávky přímo v aplikaci, ať víš, do čeho jdeš, ještě než přidáš do seznamu.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>Kde to sledovat</h3>
+          <p>Přehledně ti ukáže dostupnost titulu, ať se snadno zorientuješ a najdeš, kam zamířit dál.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+          <h3>Upozornění na novinky</h3>
+          <p>Měj přehled o premiérách a nových epizodách u titulů, které sleduješ.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+          <h3>Profily pro celou rodinu</h3>
+          <p>Každý má vlastní profil se svými seznamy a postupem. „Kdo se dívá?" jako doma na gauči.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="m10 9 4 2-4 2z"/></svg></div>
+          <h3>Objevuj podle nálady</h3>
+          <p>Procházej žánry a kurátorské řady, ať vždy najdeš to pravé na dnešní večer.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h3l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/></svg></div>
+          <h3>Bohatá metadata</h3>
+          <p>Obsazení, hodnocení, délka, rok a synopse u každého titulu — vše přehledně pohromadě.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" opacity="0"/><path d="M21 12a9 9 0 1 1-9-9"/><path d="M16 3h5v5"/><path d="M21 3l-9 9"/></svg></div>
+          <h3>Synchronizace všude</h3>
+          <p>Jeden účet, všechna zařízení. Co přidáš na telefonu, máš na televizi i na počítači.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Soukromí na prvním místě</h3>
+          <p>Sbíráme jen to nutné, data neprodáváme a kdykoli můžeš požádat o jejich smazání.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="jak-to-funguje">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Jak to funguje</div>
+        <h2>Začneš za pár vteřin</h2>
+        <p>Bez složitého nastavování. Tři kroky a Movly je tvoje.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="n grad-text">1</span>
+          <h3>Založ si účet</h3>
+          <p>Rychlá registrace a vytvoření profilů pro celou domácnost — každý si hlídá to svoje.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n grad-text">2</span>
+          <h3>Přidávej a třiď</h3>
+          <p>Najdi tituly, přidej je do seznamů a playlistů a pusť si trailer, ať víš, do čeho jdeš.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n grad-text">3</span>
+          <h3>Měj přehled</h3>
+          <p>Sleduj svůj postup, dostávej upozornění na novinky a měj svá data na všech zařízeních.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE SPLIT -->
+  <section>
+    <div class="wrap split">
+      <div class="reveal">
+        <div class="kicker">Pořádek v sledování</div>
+        <h2>Konečně víš, <span class="grad-text">u čeho jsi skončil</span></h2>
+        <p style="color:var(--text-secondary);font-size:17px">Movly si pamatuje tvůj postup napříč seriály i filmy. Žádné dohledávání, kterou epizodu sis pustil naposledy.</p>
+        <ul class="checklist">
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Pokračovat ve sledování</strong> — řada s přesně tím, kde jsi přestal.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Postup po epizodách</strong> — přehled o každém seriálu, sezoně i epizodě.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Vlastní playlisty</strong> — vytvoř si je na míru a sdílej je v rámci profilů.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Synchronizace</strong> — vše tě následuje z telefonu na televizi i počítač.</span></li>
+        </ul>
+      </div>
+      <div class="phone-bezel reveal">
+        <img src="assets/shots/ios-home.png" alt="Movly na iPhonu — domovská obrazovka" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section id="platformy">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Platformy</div>
+        <h2>Nativní na každém zařízení</h2>
+        <p>Stejný design, stejná data — vyladěné pro ovládání každé platformy. Tvé seznamy tě následují všude.</p>
+      </div>
+      <div class="platforms">
+        <div class="plat reveal">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M16.4 12.7c0-2 1.6-3 1.7-3a3.7 3.7 0 0 0-2.9-1.6c-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7A4 4 0 0 0 6.2 10c-1.5 2.6-.4 6.4 1 8.5.7 1 1.5 2.2 2.6 2.1 1-.04 1.4-.7 2.7-.7s1.6.7 2.6.6c1.1 0 1.8-1 2.5-2a8.5 8.5 0 0 0 1.1-2.3c-.03-.01-2.2-.85-2.2-3.4zM14.3 5.7A3.6 3.6 0 0 0 15.1 3a3.7 3.7 0 0 0-2.4 1.2A3.4 3.4 0 0 0 11.9 7a3 3 0 0 0 2.4-1.3z"/></svg></div>
+          <h3>Apple</h3>
+          <p class="devs">iPhone · iPad · Mac · Apple&nbsp;TV<br>Nativní SwiftUI, sidebar a focus na TV</p>
+          <span class="badge"><span class="dot"></span> UI hotové</span>
+        </div>
+        <div class="plat reveal">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0v8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zM9.5 6.5 8 4.5M14.5 6.5 16 4.5"/><circle cx="9.3" cy="8.3" r=".4" fill="#fff" stroke="none"/><circle cx="14.7" cy="8.3" r=".4" fill="#fff" stroke="none"/><path d="M4 11v5M20 11v5" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></div>
+          <h3>Android</h3>
+          <p class="devs">Telefon · Tablet · Android&nbsp;TV<br>Jeden APK, D-pad ovládání na TV</p>
+          <span class="badge"><span class="dot"></span> UI hotové</span>
+        </div>
+        <div class="plat reveal">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M3 5.5 11 4.3v7.2H3zM12.2 4.1 21 3v8.5h-8.8zM3 12.5h8v7.2L3 18.5zM12.2 12.5H21V21l-8.8-1.2z"/></svg></div>
+          <h3>Windows</h3>
+          <p class="devs">Desktop (WinUI&nbsp;3)<br>Nativní sidebar layout</p>
+          <span class="badge"><span class="dot"></span> UI hotové</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY / NÁHLEDY -->
+  <section id="nahledy">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Náhledy</div>
+        <h2>Podívej se dovnitř</h2>
+        <p>Reálné obrazovky z aplikace — tmavé, cinematické, s obsahem na prvním místě.</p>
+      </div>
+      <div class="gallery">
+        <div class="shot-frame reveal">
+          <img src="assets/shots/mac-detail.png" alt="Movly na Macu — detail titulu s obsazením a kolekcí" loading="lazy" />
+        </div>
+        <div class="phone-bezel reveal">
+          <img src="assets/shots/ios-detail.png" alt="Movly na iPhonu — detail titulu" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Časté dotazy</div>
+        <h2>Co tě nejspíš zajímá</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Co Movly přesně je?<span class="chev">+</span></summary>
+          <p>Movly je společník pro filmy a seriály. Pomáhá ti mít přehled o tom, co jsi viděl a co chceš vidět, spravovat seznamy a playlisty, pouštět oficiální trailery a zorientovat se v dostupnosti titulů.</p>
+        </details>
+        <details class="reveal">
+          <summary>Kolik Movly stojí?<span class="chev">+</span></summary>
+          <p>Aplikace je zatím ve vývoji. O modelu dostupnosti budeme informovat blíž ke spuštění.</p>
+        </details>
+        <details class="reveal">
+          <summary>Na jakých zařízeních Movly poběží?<span class="chev">+</span></summary>
+          <p>Na Apple zařízeních (iPhone, iPad, Mac, Apple TV), na Androidu (telefon, tablet, Android TV) a na Windows. Stejný účet a stejná data napříč všemi platformami.</p>
+        </details>
+        <details class="reveal">
+          <summary>Synchronizují se mé seznamy mezi zařízeními?<span class="chev">+</span></summary>
+          <p>Ano. Stačí se přihlásit stejným účtem a tvé seznamy, playlisty i postup ve sledování tě následují na všech zařízeních.</p>
+        </details>
+        <details class="reveal">
+          <summary>Jak je to s mým soukromím?<span class="chev">+</span></summary>
+          <p>Sbíráme jen údaje nutné pro fungování aplikace, neprodáváme je a kdykoli můžeš požádat o smazání účtu. Podrobnosti najdeš v <a href="privacy.html">zásadách ochrany soukromí</a>.</p>
+        </details>
+        <details class="reveal">
+          <summary>Kdy Movly vyjde?<span class="chev">+</span></summary>
+          <p>Aplikace je v aktivním vývoji a spuštění se blíží. Sleduj tuto stránku — dáme vědět.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="o-aplikaci">
+    <div class="wrap">
+      <div class="band reveal">
+        <h2>Movly je ve vývoji</h2>
+        <p>Pilně pracujeme na tom, abychom doručili ten nejpříjemnější způsob, jak mít přehled o svých filmech a seriálech. Spuštění se blíží — sleduj nás.</p>
+        <div class="hero-cta">
+          <a class="btn btn-grad" href="#funkce">Prohlédnout funkce</a>
+          <a class="btn btn-ghost" href="privacy.html">Zásady ochrany soukromí</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="#top">
+          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="bf" x1="300" y1="280" x2="724" y2="744" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#A78BFA"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/>
+            </linearGradient></defs>
+            <path d="M 304 752 L 304 300 L 512 540 L 720 300 L 720 752" fill="none" stroke="url(#bf)" stroke-width="132" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <span>Movly</span>
+        </a>
+        <p>Prémiový tmavý společník pro tvé filmy a seriály. Apple · Android · Windows.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Aplikace</h4>
+        <a href="#funkce">Funkce</a>
+        <a href="#jak-to-funguje">Jak to funguje</a>
+        <a href="#platformy">Platformy</a>
+        <a href="#faq">Časté dotazy</a>
+      </div>
+      <div class="foot-col">
+        <h4>Informace</h4>
+        <a href="#o-aplikaci">O aplikaci</a>
+        <a href="privacy.html">Zásady ochrany soukromí</a>
+        <a href="mailto:sebesta.jan@gmail.com">Kontakt</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Movly. Tvůj filmový a seriálový společník.</p>
+      <div class="legal">
+        <span style="color:var(--text-tertiary);font-size:13px">Data o titulech: TMDB</span>
+        <a href="privacy.html">Soukromí</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    // small stagger within a group based on DOM order
+    el.style.transitionDelay = (Math.min(i,6)*30)+'ms';
+    io.observe(el);
+  });
+  // header subtle shadow on scroll
+  const hdr=document.querySelector('header');
+  addEventListener('scroll',()=>{ hdr.style.borderBottomColor = scrollY>10 ? 'rgba(255,255,255,.14)' : 'rgba(255,255,255,.08)'; },{passive:true});
+</script>
+</body>
+</html>
