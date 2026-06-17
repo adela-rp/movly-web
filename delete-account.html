@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smazání účtu — Movly</title>
+<meta name="description" content="Jak požádat o smazání účtu Movly a souvisejících dat — postup, které údaje budou smazány a které dočasně uchovány." />
+<meta name="theme-color" content="#0A0A12" />
+<link rel="icon" type="image/svg+xml" href="assets/movly-icon.svg" />
+<style>
+  :root{
+    --bg-base:#0A0A12;--bg-surface:#14141F;--bg-raised:#1C1C2A;
+    --stroke:rgba(255,255,255,.08);
+    --text-primary:#FFFFFF;--text-secondary:#A0A0B2;--text-tertiary:#6C6C7E;
+    --violet-light:#A78BFA;--violet:#8B5CF6;--pink:#EC4899;--success:#34D399;
+    --grad-brand:linear-gradient(135deg,#A78BFA 0%,#8B5CF6 50%,#EC4899 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,system-ui,sans-serif;
+    background:var(--bg-base);color:var(--text-secondary);line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--violet-light);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .glow{position:fixed;border-radius:50%;filter:blur(120px);z-index:0;pointer-events:none}
+  .glow-1{top:-220px;left:-120px;width:520px;height:520px;background:radial-gradient(circle,#7C3AED,transparent 70%);opacity:.4}
+
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(10,10,18,.72);border-bottom:1px solid var(--stroke)}
+  nav{max-width:840px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.5px;color:#fff}
+  .brand svg{height:30px;width:auto;display:block}
+  .back{color:var(--text-secondary);font-size:15px;font-weight:500}
+  .back:hover{color:#fff;text-decoration:none}
+
+  main{max-width:840px;margin:0 auto;padding:56px 24px 80px;position:relative;z-index:1}
+  h1{color:#fff;font-size:clamp(32px,5vw,46px);font-weight:900;letter-spacing:-1.2px;margin-bottom:10px}
+  .updated{color:var(--text-tertiary);font-size:14px;margin-bottom:8px}
+  .lede{font-size:18px;color:var(--text-secondary);margin:22px 0 36px}
+  h2{color:#fff;font-size:22px;font-weight:800;letter-spacing:-.4px;margin:42px 0 14px;padding-top:28px;border-top:1px solid var(--stroke)}
+  h2 .grad-text{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  p{margin-bottom:14px}
+  ul{margin:0 0 18px;padding-left:22px}
+  li{margin-bottom:9px}
+  strong{color:#fff;font-weight:600}
+  .box{background:var(--bg-surface);border:1px solid var(--stroke);border-radius:16px;padding:22px 26px;margin:18px 0}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--stroke);vertical-align:top}
+  th{color:#fff;font-weight:700;background:var(--bg-surface)}
+  td:first-child{color:#fff;font-weight:500}
+
+  /* numbered steps */
+  ol.steps{list-style:none;counter-reset:s;margin:6px 0 8px;padding:0}
+  ol.steps li{counter-increment:s;position:relative;padding:4px 0 18px 52px;margin:0}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;
+    background:var(--grad-brand);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+  ol.steps li strong{display:block;color:#fff;margin-bottom:3px;font-size:16px}
+
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--grad-brand);color:#fff;font-weight:700;font-size:16px;
+    padding:14px 26px;border-radius:999px;margin:6px 0 4px;transition:transform .2s,box-shadow .2s}
+  .cta:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(139,92,246,.45);text-decoration:none}
+  .mailrow{font-size:15px;margin-top:10px}
+  footer{border-top:1px solid var(--stroke);text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:13px;position:relative;z-index:1}
+  footer a{color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<div class="glow glow-1"></div>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="bm" x1="300" y1="280" x2="724" y2="744" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#A78BFA"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/>
+        </linearGradient></defs>
+        <path d="M 304 752 L 304 300 L 512 540 L 720 300 L 720 752" fill="none" stroke="url(#bm)" stroke-width="132" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span>Movly</span>
+    </a>
+    <a class="back" href="index.html">← Zpět na web</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Smazání účtu</h1>
+  <p class="updated">Naposledy aktualizováno: 17. června 2026</p>
+
+  <p class="lede">Tato stránka popisuje, jak můžeš v aplikaci <strong>Movly</strong> požádat o smazání svého účtu a všech souvisejících dat, jaké údaje budou smazány a které jsou po omezenou dobu uchovány.</p>
+
+  <h2><span class="grad-text">Jak požádat o smazání účtu</span></h2>
+  <p>Žádost o smazání účtu Movly podáš e-mailem. Postupuj takto:</p>
+  <ol class="steps">
+    <li><strong>Napiš nám e-mail</strong> na adresu <a href="mailto:cinelog@outlook.com?subject=Movly%20%E2%80%93%20%C5%BD%C3%A1dost%20o%20smaz%C3%A1n%C3%AD%20%C3%BA%C4%8Dtu">cinelog@outlook.com</a> z e-mailové adresy, kterou máš v Movly registrovanou.</li>
+    <li><strong>Do předmětu uveď</strong> „Žádost o smazání účtu Movly".</li>
+    <li><strong>Do těla zprávy napiš</strong> svou registrační e-mailovou adresu (případně jméno profilu), ať tě dokážeme jednoznačně identifikovat.</li>
+    <li><strong>Počkej na potvrzení</strong> — žádost zpracujeme a údaje smažeme <strong>do 30 dnů</strong> od ověření. O dokončení tě budeme informovat e-mailem.</li>
+  </ol>
+
+  <div class="box" style="text-align:center">
+    <a class="cta" href="mailto:cinelog@outlook.com?subject=Movly%20%E2%80%93%20%C5%BD%C3%A1dost%20o%20smaz%C3%A1n%C3%AD%20%C3%BA%C4%8Dtu&body=Moje%20registra%C4%8Dn%C3%AD%20e-mailov%C3%A1%20adresa%3A%20">✉️ Požádat o smazání účtu</a>
+    <div class="mailrow">nebo napiš ručně na <a href="mailto:cinelog@outlook.com">cinelog@outlook.com</a></div>
+  </div>
+
+  <h2>Které údaje budou smazány</h2>
+  <p>Po zpracování žádosti <strong>trvale a nevratně</strong> odstraníme z našich aktivních systémů zejména:</p>
+  <ul>
+    <li>tvůj <strong>účet</strong> a přihlašovací údaje (e-mailová adresa, heslo),</li>
+    <li>všechny tvé <strong>profily</strong> a jejich názvy,</li>
+    <li>tvé <strong>seznamy, playlisty a oblíbené tituly</strong>,</li>
+    <li><strong>postup ve sledování</strong> (co máš za sebou) a předvolby,</li>
+    <li>údaje spojené přímo s tvým účtem.</li>
+  </ul>
+
+  <h2>Které údaje uchováváme a jak dlouho</h2>
+  <p>V zájmu bezpečnosti, obnovy ze záloh a splnění zákonných povinností můžeme po omezenou dobu uchovat tyto údaje:</p>
+  <table>
+    <tr><th>Typ dat</th><th>Doba uchování</th></tr>
+    <tr><td>Záložní kopie systémů</td><td>Maximálně 30 dnů od smazání, poté jsou zálohy s tvými daty nevratně přepsány.</td></tr>
+    <tr><td>Provozní a bezpečnostní logy</td><td>Maximálně 90 dnů; neslouží k tvé identifikaci a po uplynutí lhůty se mažou.</td></tr>
+    <tr><td>Údaje vyžadované zákonem</td><td>Pouze pokud to ukládá právní předpis, a jen po nezbytně nutnou dobu.</td></tr>
+  </table>
+  <p>Údaje, které zůstávají jen ve tvém zařízení (např. historie hledání a nastavení), se odstraní odinstalováním aplikace.</p>
+
+  <h2>Kontakt</h2>
+  <p>Máš-li jakékoli dotazy ke smazání účtu nebo k ochraně soukromí, napiš nám na <a href="mailto:cinelog@outlook.com">cinelog@outlook.com</a>. Více informací najdeš v <a href="privacy.html">zásadách ochrany soukromí</a>.</p>
+</main>
+
+<footer>
+  © 2026 Movly · <a href="index.html">Web</a> · <a href="privacy.html">Zásady ochrany soukromí</a>
+</footer>
+</body>
+</html>
