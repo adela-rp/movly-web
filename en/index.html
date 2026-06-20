@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Movly — tvůj filmový a seriálový společník</title>
-<meta name="description" content="Movly je prémiový tmavý společník pro filmy a seriály. Sleduj, co chceš vidět, spravuj seznamy, tvoř playlisty a stáhni aplikaci pro Windows nebo macOS." />
+<title>Movly — your movies & TV shows companion</title>
+<meta name="description" content="Movly is a premium dark companion for movies and TV shows. Track what you want to watch, manage lists, build playlists, and download the app for Windows or macOS." />
 <meta name="theme-color" content="#0A0A12" />
-<link rel="icon" type="image/svg+xml" href="assets/movly-icon.svg" />
-<meta property="og:title" content="Movly — tvůj filmový a seriálový společník" />
-<meta property="og:description" content="Sleduj filmy a seriály, spravuj seznamy a playlisty, pouštěj trailery a stáhni aplikaci pro Windows nebo macOS." />
+<link rel="icon" type="image/svg+xml" href="../assets/movly-icon.svg" />
+<link rel="alternate" hreflang="cs" href="../index.html" />
+<link rel="alternate" hreflang="en" href="index.html" />
+<meta property="og:title" content="Movly — your movies & TV shows companion" />
+<meta property="og:description" content="Track movies and TV shows, manage lists and playlists, play trailers, and download the app for Windows or macOS." />
 <meta property="og:type" content="website" />
 <style>
   :root{
@@ -79,7 +81,7 @@
   .btn-ghost:hover{background:rgba(255,255,255,.12)}
   .btn-grad{background:var(--grad-brand);color:#fff}
   .btn-grad:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(139,92,246,.45)}
-  @media(max-width:780px){.nav-links a:not(.btn){display:none}}
+  @media(max-width:880px){.nav-links a:not(.btn):not(.lang-switch a){display:none}.nav-links .desk{display:none}}
 
   /* ---------- HERO ---------- */
   .hero{position:relative;z-index:1;padding:96px 0 56px;text-align:center}
@@ -363,14 +365,14 @@
       <span>Movly</span>
     </a>
     <div class="nav-links">
-      <a href="#funkce">Funkce</a>
-      <a href="#jak-to-funguje">Jak to funguje</a>
-      <a href="#platformy">Platformy</a>
-      <a href="#stahnout">Stáhnout</a>
-      <a href="#nahledy">Náhledy</a>
-      <a href="#faq">FAQ</a>
-      <span class="lang-switch"><a class="active" href="index.html">CS</a><a href="en/index.html">EN</a></span>
-      <a class="btn btn-grad" href="#stahnout">Instalačky</a>
+      <a class="desk" href="#features">Features</a>
+      <a class="desk" href="#how-it-works">How it works</a>
+      <a class="desk" href="#platforms">Platforms</a>
+      <a class="desk" href="#download">Download</a>
+      <a class="desk" href="#preview">Preview</a>
+      <a class="desk" href="#faq">FAQ</a>
+      <span class="lang-switch"><a href="../index.html">CS</a><a class="active" href="index.html">EN</a></span>
+      <a class="btn btn-grad" href="#download">Get the app</a>
     </div>
   </nav>
 </header>
@@ -380,18 +382,18 @@
   <!-- HERO -->
   <section class="hero wrap">
     <span class="pill reveal"><span class="dot"></span> Apple · Android · Windows</span>
-    <h1 class="reveal">Tvůj filmový a seriálový<br><span class="grad-text">společník</span></h1>
-    <p class="lead reveal">Movly drží tvůj filmový život pohromadě. Sleduj, co chceš vidět, spravuj seznamy, skládej playlisty, pouštěj trailery a měj přehled, kde se dá co sledovat — vše v jedné prémiové tmavé aplikaci, na všech tvých zařízeních.</p>
+    <h1 class="reveal">Your movies & TV shows<br><span class="grad-text">companion</span></h1>
+    <p class="lead reveal">Movly keeps your movie life together. Track what you want to watch, manage lists, build playlists, play trailers and keep an overview of where things are available — all in one premium dark app, on every device you own.</p>
     <div class="hero-cta reveal">
-      <a class="btn btn-primary" href="#stahnout">Stáhnout aplikaci</a>
-      <a class="btn btn-ghost" href="#funkce">Co Movly umí ▾</a>
+      <a class="btn btn-primary" href="#download">Download the app</a>
+      <a class="btn btn-ghost" href="#features">What Movly does ▾</a>
     </div>
-    <p class="hero-note reveal">Aktuální buildy pro Windows a macOS najdeš po přihlášení.</p>
+    <p class="hero-note reveal">The latest Windows and macOS builds are available after you sign in.</p>
 
     <!-- real screenshot: macOS home -->
     <div class="mock reveal">
       <div class="shot-frame">
-        <img src="assets/shots/mac-home.png" alt="Movly na Macu — domovská obrazovka s hero bannerem, kolekcemi a Top 10" loading="lazy" />
+        <img src="../assets/shots/mac-home.png" alt="Movly on Mac — home screen with hero banner, collections and Top 10" loading="lazy" />
       </div>
     </div>
   </section>
@@ -400,100 +402,100 @@
   <section style="padding-top:24px">
     <div class="wrap">
       <div class="stats">
-        <div class="stat reveal"><div class="num grad-text">3</div><div class="lbl">platformy, jeden účet</div></div>
-        <div class="stat reveal"><div class="num grad-text">7</div><div class="lbl">typů zařízení</div></div>
-        <div class="stat reveal"><div class="num grad-text">∞</div><div class="lbl">seznamů a playlistů</div></div>
-        <div class="stat reveal"><div class="num grad-text">100&nbsp;%</div><div class="lbl">tmavý cinematický design</div></div>
+        <div class="stat reveal"><div class="num grad-text">3</div><div class="lbl">platforms, one account</div></div>
+        <div class="stat reveal"><div class="num grad-text">7</div><div class="lbl">device types</div></div>
+        <div class="stat reveal"><div class="num grad-text">∞</div><div class="lbl">lists and playlists</div></div>
+        <div class="stat reveal"><div class="num grad-text">100&nbsp;%</div><div class="lbl">dark cinematic design</div></div>
       </div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section id="funkce">
+  <section id="features">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="kicker">Funkce</div>
-        <h2>Vše pro tvůj přehled na jednom místě</h2>
-        <p>Žádný chaos v záložkách a poznámkách. Movly ti dá pořádek v tom, co jsi viděl, co chceš vidět a kdy to vyjde.</p>
+        <div class="kicker">Features</div>
+        <h2>Everything for your overview in one place</h2>
+        <p>No more chaos in bookmarks and notes. Movly brings order to what you've watched, what you want to watch and when it comes out.</p>
       </div>
       <div class="features">
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div>
-          <h3>Sledování filmů a seriálů</h3>
-          <p>Označ, co máš za sebou, a sleduj svůj postup epizodu po epizodě napříč seriály.</p>
+          <h3>Track movies & TV shows</h3>
+          <p>Mark what you've finished and follow your progress episode by episode across your shows.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/><circle cx="19" cy="17" r="2.4"/></svg></div>
-          <h3>Seznamy a playlisty</h3>
-          <p>Skládej vlastní seznamy a tématické playlisty — „Na víkend", „Sci-fi klasika", cokoli tě napadne.</p>
+          <h3>Lists and playlists</h3>
+          <p>Build your own lists and themed playlists — "For the weekend", "Sci-fi classics", whatever you like.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><polygon points="10 8 16 12 10 16 10 8"/><rect x="3" y="4" width="18" height="16" rx="3"/></svg></div>
-          <h3>Trailery na dotek</h3>
-          <p>Pusť si oficiální upoutávky přímo v aplikaci, ať víš, do čeho jdeš, ještě než přidáš do seznamu.</p>
+          <h3>Trailers at a tap</h3>
+          <p>Play official trailers right inside the app, so you know what you're getting into before you add it to a list.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-          <h3>Kde to sledovat</h3>
-          <p>Přehledně ti ukáže dostupnost titulu, ať se snadno zorientuješ a najdeš, kam zamířit dál.</p>
+          <h3>Where to watch</h3>
+          <p>It clearly shows a title's availability so you can easily get your bearings and know where to head next.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
-          <h3>Upozornění na novinky</h3>
-          <p>Měj přehled o premiérách a nových epizodách u titulů, které sleduješ.</p>
+          <h3>New release alerts</h3>
+          <p>Stay on top of premieres and new episodes for the titles you follow.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
-          <h3>Profily pro celou rodinu</h3>
-          <p>Každý má vlastní profil se svými seznamy a postupem. „Kdo se dívá?" jako doma na gauči.</p>
+          <h3>Profiles for the whole family</h3>
+          <p>Everyone gets their own profile with their own lists and progress. "Who's watching?" just like on the couch.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="m10 9 4 2-4 2z"/></svg></div>
-          <h3>Objevuj podle nálady</h3>
-          <p>Procházej žánry a kurátorské řady, ať vždy najdeš to pravé na dnešní večer.</p>
+          <h3>Discover by mood</h3>
+          <p>Browse genres and curated rows so you always find the right thing for tonight.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h3l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/></svg></div>
-          <h3>Bohatá metadata</h3>
-          <p>Obsazení, hodnocení, délka, rok a synopse u každého titulu — vše přehledně pohromadě.</p>
+          <h3>Rich metadata</h3>
+          <p>Cast, rating, runtime, year and synopsis for every title — all neatly together.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" opacity="0"/><path d="M21 12a9 9 0 1 1-9-9"/><path d="M16 3h5v5"/><path d="M21 3l-9 9"/></svg></div>
-          <h3>Synchronizace všude</h3>
-          <p>Jeden účet, všechna zařízení. Co přidáš na telefonu, máš na televizi i na počítači.</p>
+          <h3>Sync everywhere</h3>
+          <p>One account, every device. What you add on your phone is there on your TV and computer too.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h3>Soukromí na prvním místě</h3>
-          <p>Sbíráme jen to nutné, data neprodáváme a kdykoli můžeš požádat o jejich smazání.</p>
+          <h3>Privacy first</h3>
+          <p>We only collect what's necessary, never sell your data and you can request its deletion anytime.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section id="jak-to-funguje">
+  <section id="how-it-works">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="kicker">Jak to funguje</div>
-        <h2>Začneš za pár vteřin</h2>
-        <p>Bez složitého nastavování. Tři kroky a Movly je tvoje.</p>
+        <div class="kicker">How it works</div>
+        <h2>Get started in seconds</h2>
+        <p>No complicated setup. Three steps and Movly is yours.</p>
       </div>
       <div class="steps">
         <div class="step reveal">
           <span class="n grad-text">1</span>
-          <h3>Založ si účet</h3>
-          <p>Rychlá registrace a vytvoření profilů pro celou domácnost — každý si hlídá to svoje.</p>
+          <h3>Create an account</h3>
+          <p>Quick sign-up and profiles for the whole household — everyone keeps track of their own.</p>
         </div>
         <div class="step reveal">
           <span class="n grad-text">2</span>
-          <h3>Přidávej a třiď</h3>
-          <p>Najdi tituly, přidej je do seznamů a playlistů a pusť si trailer, ať víš, do čeho jdeš.</p>
+          <h3>Add and organize</h3>
+          <p>Find titles, add them to lists and playlists and play a trailer so you know what you're getting into.</p>
         </div>
         <div class="step reveal">
           <span class="n grad-text">3</span>
-          <h3>Měj přehled</h3>
-          <p>Sleduj svůj postup, dostávej upozornění na novinky a měj svá data na všech zařízeních.</p>
+          <h3>Stay on top</h3>
+          <p>Follow your progress, get new release alerts and keep your data on every device.</p>
         </div>
       </div>
     </div>
@@ -503,83 +505,83 @@
   <section>
     <div class="wrap split">
       <div class="reveal">
-        <div class="kicker">Pořádek v sledování</div>
-        <h2>Konečně víš, <span class="grad-text">u čeho jsi skončil</span></h2>
-        <p style="color:var(--text-secondary);font-size:17px">Movly si pamatuje tvůj postup napříč seriály i filmy. Žádné dohledávání, kterou epizodu sis pustil naposledy.</p>
+        <div class="kicker">Stay on track</div>
+        <h2>Finally know <span class="grad-text">where you left off</span></h2>
+        <p style="color:var(--text-secondary);font-size:17px">Movly remembers your progress across shows and movies. No more hunting for which episode you watched last.</p>
         <ul class="checklist">
-          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Pokračovat ve sledování</strong> — řada s přesně tím, kde jsi přestal.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Postup po epizodách</strong> — přehled o každém seriálu, sezoně i epizodě.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Vlastní playlisty</strong> — vytvoř si je na míru a sdílej je v rámci profilů.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Synchronizace</strong> — vše tě následuje z telefonu na televizi i počítač.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Continue watching</strong> — a row with exactly where you stopped.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Episode progress</strong> — an overview of every show, season and episode.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Custom playlists</strong> — build them your way and share them across profiles.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span><span><strong>Sync</strong> — everything follows you from phone to TV and computer.</span></li>
         </ul>
       </div>
       <div class="phone-bezel reveal">
-        <img src="assets/shots/ios-home.png" alt="Movly na iPhonu — domovská obrazovka" loading="lazy" />
+        <img src="../assets/shots/ios-home.png" alt="Movly on iPhone — home screen" loading="lazy" />
       </div>
     </div>
   </section>
 
   <!-- PLATFORMS -->
-  <section id="platformy">
+  <section id="platforms">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="kicker">Platformy</div>
-        <h2>Nativní na každém zařízení</h2>
-        <p>Stejný design, stejná data — vyladěné pro ovládání každé platformy. Tvé seznamy tě následují všude.</p>
+        <div class="kicker">Platforms</div>
+        <h2>Native on every device</h2>
+        <p>Same design, same data — tuned to how each platform is controlled. Your lists follow you everywhere.</p>
       </div>
       <div class="platforms">
         <div class="plat reveal">
           <div class="pico"><svg viewBox="0 0 24 24"><path d="M16.4 12.7c0-2 1.6-3 1.7-3a3.7 3.7 0 0 0-2.9-1.6c-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7A4 4 0 0 0 6.2 10c-1.5 2.6-.4 6.4 1 8.5.7 1 1.5 2.2 2.6 2.1 1-.04 1.4-.7 2.7-.7s1.6.7 2.6.6c1.1 0 1.8-1 2.5-2a8.5 8.5 0 0 0 1.1-2.3c-.03-.01-2.2-.85-2.2-3.4zM14.3 5.7A3.6 3.6 0 0 0 15.1 3a3.7 3.7 0 0 0-2.4 1.2A3.4 3.4 0 0 0 11.9 7a3 3 0 0 0 2.4-1.3z"/></svg></div>
           <h3>Apple</h3>
-          <p class="devs">iPhone · iPad · Mac · Apple&nbsp;TV<br>Nativní SwiftUI, sidebar a focus na TV</p>
-          <span class="badge"><span class="dot"></span> UI hotové</span>
+          <p class="devs">iPhone · iPad · Mac · Apple&nbsp;TV<br>Native SwiftUI, sidebar and focus on TV</p>
+          <span class="badge"><span class="dot"></span> UI ready</span>
         </div>
         <div class="plat reveal">
           <div class="pico"><svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0v8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zM9.5 6.5 8 4.5M14.5 6.5 16 4.5"/><circle cx="9.3" cy="8.3" r=".4" fill="#fff" stroke="none"/><circle cx="14.7" cy="8.3" r=".4" fill="#fff" stroke="none"/><path d="M4 11v5M20 11v5" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></div>
           <h3>Android</h3>
-          <p class="devs">Telefon · Tablet · Android&nbsp;TV<br>Jeden APK, D-pad ovládání na TV</p>
-          <span class="badge"><span class="dot"></span> UI hotové</span>
+          <p class="devs">Phone · Tablet · Android&nbsp;TV<br>One APK, D-pad control on TV</p>
+          <span class="badge"><span class="dot"></span> UI ready</span>
         </div>
         <div class="plat reveal">
           <div class="pico"><svg viewBox="0 0 24 24"><path d="M3 5.5 11 4.3v7.2H3zM12.2 4.1 21 3v8.5h-8.8zM3 12.5h8v7.2L3 18.5zM12.2 12.5H21V21l-8.8-1.2z"/></svg></div>
           <h3>Windows</h3>
-          <p class="devs">Desktop (WinUI&nbsp;3)<br>Nativní sidebar layout</p>
-          <span class="badge"><span class="dot"></span> UI hotové</span>
+          <p class="devs">Desktop (WinUI&nbsp;3)<br>Native sidebar layout</p>
+          <span class="badge"><span class="dot"></span> UI ready</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- DOWNLOADS -->
-  <section id="stahnout">
+  <section id="download">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="kicker">Instalačky</div>
-        <h2>Stáhni Movly pro Windows a macOS</h2>
-        <p>Přihlas se Movly účtem a stáhni si aktuální build pro svoje zařízení.</p>
+        <div class="kicker">Get the app</div>
+        <h2>Download Movly for Windows and macOS</h2>
+        <p>Sign in with your Movly account and download the latest build for your device.</p>
       </div>
 
       <div class="download-shell reveal" aria-live="polite">
         <div class="download-top">
           <div class="download-copy">
-            <h3>Movly účet</h3>
-            <p>Použij stejný účet jako v aplikaci. Po přihlášení se zobrazí dostupné instalačky.</p>
+            <h3>Movly account</h3>
+            <p>Use the same account as in the app. After signing in you'll see the available installers.</p>
           </div>
 
           <form id="download-login-form" class="auth-form">
             <div class="auth-grid">
               <label class="field">
-                Uživatelské jméno nebo e-mail
+                Username or email
                 <input id="movly-login-user" name="username" autocomplete="username" required />
               </label>
               <label class="field">
-                Heslo
+                Password
                 <input id="movly-login-password" name="password" type="password" autocomplete="current-password" required />
               </label>
             </div>
             <div class="auth-actions">
-              <button id="movly-login-button" class="btn btn-grad" type="submit">Přihlásit se</button>
-              <span style="color:var(--text-tertiary);font-size:13px">Stejné přihlášení jako v aplikaci.</span>
+              <button id="movly-login-button" class="btn btn-grad" type="submit">Sign in</button>
+              <span style="color:var(--text-tertiary);font-size:13px">Same sign-in as in the app.</span>
             </div>
           </form>
 
@@ -590,16 +592,16 @@
                 <div id="download-account-email" class="account-meta"></div>
                 <div id="download-account-badges" class="account-badges"></div>
               </div>
-              <button id="movly-logout-button" class="btn btn-ghost" type="button">Odhlásit</button>
+              <button id="movly-logout-button" class="btn btn-ghost" type="button">Sign out</button>
             </div>
           </div>
         </div>
 
-        <div id="download-status" class="download-status">Přihlas se a zobrazíme dostupné instalátory pro tvůj účet.</div>
+        <div id="download-status" class="download-status">Sign in and we'll show the installers available for your account.</div>
 
         <div id="download-locked" class="download-locked">
-          <strong>Přihlas se pro stažení.</strong>
-          Po přihlášení uvidíš dostupné verze pro Windows a macOS.
+          <strong>Sign in to download.</strong>
+          After signing in you'll see the available versions for Windows and macOS.
         </div>
 
         <div id="download-grid" class="download-grid" hidden></div>
@@ -607,20 +609,20 @@
     </div>
   </section>
 
-  <!-- GALLERY / NÁHLEDY -->
-  <section id="nahledy">
+  <!-- GALLERY / PREVIEW -->
+  <section id="preview">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="kicker">Náhledy</div>
-        <h2>Podívej se dovnitř</h2>
-        <p>Reálné obrazovky z aplikace — tmavé, cinematické, s obsahem na prvním místě.</p>
+        <div class="kicker">Preview</div>
+        <h2>Take a look inside</h2>
+        <p>Real screens from the app — dark, cinematic, content first.</p>
       </div>
       <div class="gallery">
         <div class="shot-frame reveal">
-          <img src="assets/shots/mac-detail.png" alt="Movly na Macu — detail titulu s obsazením a kolekcí" loading="lazy" />
+          <img src="../assets/shots/mac-detail.png" alt="Movly on Mac — title detail with cast and collection" loading="lazy" />
         </div>
         <div class="phone-bezel reveal">
-          <img src="assets/shots/ios-detail.png" alt="Movly na iPhonu — detail titulu" loading="lazy" />
+          <img src="../assets/shots/ios-detail.png" alt="Movly on iPhone — title detail" loading="lazy" />
         </div>
       </div>
     </div>
@@ -630,47 +632,47 @@
   <section id="faq">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="kicker">Časté dotazy</div>
-        <h2>Co tě nejspíš zajímá</h2>
+        <div class="kicker">FAQ</div>
+        <h2>What you're probably wondering</h2>
       </div>
       <div class="faq">
         <details class="reveal">
-          <summary>Co Movly přesně je?<span class="chev">+</span></summary>
-          <p>Movly je společník pro filmy a seriály. Pomáhá ti mít přehled o tom, co jsi viděl a co chceš vidět, spravovat seznamy a playlisty, pouštět oficiální trailery a zorientovat se v dostupnosti titulů.</p>
+          <summary>What exactly is Movly?<span class="chev">+</span></summary>
+          <p>Movly is a companion for movies and TV shows. It helps you keep track of what you've watched and what you want to watch, manage lists and playlists, play official trailers and get your bearings on a title's availability.</p>
         </details>
         <details class="reveal">
-          <summary>Kolik Movly stojí?<span class="chev">+</span></summary>
-          <p>Aplikace je zatím ve vývoji. O modelu dostupnosti budeme informovat blíž ke spuštění.</p>
+          <summary>How much does Movly cost?<span class="chev">+</span></summary>
+          <p>The app is still in development. We'll share details about availability closer to launch.</p>
         </details>
         <details class="reveal">
-          <summary>Na jakých zařízeních Movly poběží?<span class="chev">+</span></summary>
-          <p>Na Apple zařízeních (iPhone, iPad, Mac, Apple TV), na Androidu (telefon, tablet, Android TV) a na Windows. Stejný účet a stejná data napříč všemi platformami.</p>
+          <summary>Which devices does Movly run on?<span class="chev">+</span></summary>
+          <p>On Apple devices (iPhone, iPad, Mac, Apple TV), on Android (phone, tablet, Android TV) and on Windows. The same account and the same data across every platform.</p>
         </details>
         <details class="reveal">
-          <summary>Synchronizují se mé seznamy mezi zařízeními?<span class="chev">+</span></summary>
-          <p>Ano. Stačí se přihlásit stejným účtem a tvé seznamy, playlisty i postup ve sledování tě následují na všech zařízeních.</p>
+          <summary>Do my lists sync between devices?<span class="chev">+</span></summary>
+          <p>Yes. Just sign in with the same account and your lists, playlists and watch progress follow you on every device.</p>
         </details>
         <details class="reveal">
-          <summary>Jak je to s mým soukromím?<span class="chev">+</span></summary>
-          <p>Sbíráme jen údaje nutné pro fungování aplikace, neprodáváme je a kdykoli můžeš požádat o smazání účtu. Podrobnosti najdeš v <a href="privacy.html">zásadách ochrany soukromí</a>.</p>
+          <summary>What about my privacy?<span class="chev">+</span></summary>
+          <p>We only collect the data needed for the app to work, we never sell it, and you can request account deletion anytime. Details are in our <a href="privacy.html">privacy policy</a>.</p>
         </details>
         <details class="reveal">
-          <summary>Kdy Movly vyjde?<span class="chev">+</span></summary>
-          <p>Aplikace je v aktivním vývoji a spuštění se blíží. Sleduj tuto stránku — dáme vědět.</p>
+          <summary>When is Movly coming out?<span class="chev">+</span></summary>
+          <p>The app is in active development and launch is getting close. Follow this page — we'll let you know.</p>
         </details>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="o-aplikaci">
+  <section id="about">
     <div class="wrap">
       <div class="band reveal">
-        <h2>Stáhni Movly</h2>
-        <p>Přihlas se Movly účtem a stáhni si aktuální instalačku pro Windows nebo macOS.</p>
+        <h2>Download Movly</h2>
+        <p>Sign in with your Movly account and download the latest installer for Windows or macOS.</p>
         <div class="hero-cta">
-          <a class="btn btn-grad" href="#stahnout">Stáhnout instalačky</a>
-          <a class="btn btn-ghost" href="privacy.html">Zásady ochrany soukromí</a>
+          <a class="btn btn-grad" href="#download">Get the installers</a>
+          <a class="btn btn-ghost" href="privacy.html">Privacy policy</a>
         </div>
       </div>
     </div>
@@ -690,29 +692,30 @@
           </svg>
           <span>Movly</span>
         </a>
-        <p>Prémiový tmavý společník pro tvé filmy a seriály. Apple · Android · Windows.</p>
+        <p>A premium dark companion for your movies and TV shows. Apple · Android · Windows.</p>
       </div>
       <div class="foot-col">
-        <h4>Aplikace</h4>
-        <a href="#funkce">Funkce</a>
-        <a href="#jak-to-funguje">Jak to funguje</a>
-        <a href="#platformy">Platformy</a>
-        <a href="#stahnout">Stáhnout</a>
-        <a href="#faq">Časté dotazy</a>
+        <h4>App</h4>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#platforms">Platforms</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
       </div>
       <div class="foot-col">
-        <h4>Informace</h4>
-        <a href="#o-aplikaci">O aplikaci</a>
-        <a href="privacy.html">Zásady ochrany soukromí</a>
-        <a href="delete-account.html">Smazání účtu</a>
-        <a href="mailto:cinelog@outlook.com">Kontakt</a>
+        <h4>Info</h4>
+        <a href="#about">About</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="delete-account.html">Account deletion</a>
+        <a href="mailto:cinelog@outlook.com">Contact</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>© 2026 Movly. Tvůj filmový a seriálový společník.</p>
+      <p>© 2026 Movly. Your movies & TV shows companion.</p>
       <div class="legal">
-        <span style="color:var(--text-tertiary);font-size:13px">Data o titulech: TMDB</span>
-        <a href="privacy.html">Soukromí</a>
+        <span style="color:var(--text-tertiary);font-size:13px">Title data: TMDB</span>
+        <a href="../index.html">Čeština</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </div>
   </div>
@@ -724,7 +727,6 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{
-    // small stagger within a group based on DOM order
     el.style.transitionDelay = (Math.min(i,6)*30)+'ms';
     io.observe(el);
   });
@@ -777,7 +779,7 @@
     try {
       response = await fetch(path, { ...options, headers });
     } catch (error) {
-      throw new Error(`Stažení teď není dostupné (${error.message}). Zkus to prosím později.`);
+      throw new Error(`Downloads are unavailable right now (${error.message}). Please try again later.`);
     }
 
     const text = await response.text();
@@ -786,28 +788,28 @@
       try {
         payload = JSON.parse(text);
       } catch {
-        throw new Error(`Stažení teď není dostupné (${response.status}). Zkus to prosím později.`);
+        throw new Error(`Downloads are unavailable right now (${response.status}). Please try again later.`);
       }
     }
 
     if (!response.ok) {
-      throw new Error(payload.message || payload.error || `Požadavek selhal (${response.status}).`);
+      throw new Error(payload.message || payload.error || `Request failed (${response.status}).`);
     }
     return payload;
   }
 
   function renderAccount(session) {
     const account = session.account || {};
-    const displayName = account.displayName || account.username || 'Movly účet';
+    const displayName = account.displayName || account.username || 'Movly account';
     downloadEls.accountName.textContent = displayName;
     downloadEls.accountEmail.textContent = account.email || '';
     downloadEls.accountBadges.innerHTML = [
-      '<span class="mini-badge">Přihlášeno</span>',
+      '<span class="mini-badge">Signed in</span>',
       session.hasDownloadAccess
-        ? `<span class="mini-badge good">${escapeHtml(session.accessLabel || 'Přístup povolen')}</span>`
-        : '<span class="mini-badge warn">Nedostupné</span>',
+        ? `<span class="mini-badge good">${escapeHtml(session.accessLabel || 'Access granted')}</span>`
+        : '<span class="mini-badge warn">Unavailable</span>',
       account.coins !== null && account.coins !== undefined
-        ? `<span class="mini-badge">${escapeHtml(account.coins)} mincí</span>`
+        ? `<span class="mini-badge">${escapeHtml(account.coins)} coins</span>`
         : '',
     ].join('');
     downloadEls.form.hidden = true;
@@ -824,7 +826,7 @@
 
   function renderDownloads(downloads) {
     downloadEls.grid.innerHTML = downloads.map((item) => {
-      const facts = [item.type, item.sizeLabel || 'soubor chybí'].filter(Boolean);
+      const facts = [item.type, item.sizeLabel || 'file missing'].filter(Boolean);
       return `
         <article class="download-card${item.available ? '' : ' missing'}">
           <div class="download-card-head">
@@ -838,7 +840,7 @@
             ${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join('')}
           </div>
           <button class="btn ${item.available ? 'btn-grad' : 'btn-ghost'}" type="button" data-download-id="${escapeHtml(item.id)}" ${item.available ? '' : 'disabled'}>
-            ${item.available ? 'Stáhnout' : escapeHtml(item.missingMessage || 'Soubor není nahraný')}
+            ${item.available ? 'Download' : escapeHtml(item.missingMessage || 'File not uploaded')}
           </button>
         </article>
       `;
@@ -850,7 +852,7 @@
   async function loadDownloads() {
     const data = await downloadApi('/api/downloads');
     renderDownloads(data.downloads || []);
-    setDownloadStatus('Přihlášení proběhlo. Vyber instalačku pro svoje zařízení.', 'ok');
+    setDownloadStatus('Signed in. Pick the installer for your device.', 'ok');
   }
 
   async function applySession(session) {
@@ -858,7 +860,7 @@
     if (!session.hasDownloadAccess) {
       downloadEls.grid.hidden = true;
       downloadEls.locked.hidden = false;
-      setDownloadStatus('Pro tento účet teď nejsou instalačky dostupné.', 'error');
+      setDownloadStatus('No installers are available for this account right now.', 'error');
       return;
     }
     await loadDownloads();
@@ -867,8 +869,8 @@
   downloadEls.form.addEventListener('submit', async (event) => {
     event.preventDefault();
     downloadEls.loginButton.disabled = true;
-    downloadEls.loginButton.textContent = 'Přihlašuji...';
-    setDownloadStatus('Ověřuji Movly účet...');
+    downloadEls.loginButton.textContent = 'Signing in...';
+    setDownloadStatus('Verifying your Movly account...');
     try {
       const session = await downloadApi('/api/auth/login', {
         method: 'POST',
@@ -885,16 +887,16 @@
       clearAccount();
     } finally {
       downloadEls.loginButton.disabled = false;
-      downloadEls.loginButton.textContent = 'Přihlásit se';
+      downloadEls.loginButton.textContent = 'Sign in';
     }
   });
 
   downloadEls.logoutButton.addEventListener('click', async () => {
     try {
       await downloadApi('/api/auth/logout', { method: 'POST' });
-      setDownloadStatus('Odhlášeno. Instalačky jsou znovu skryté.');
+      setDownloadStatus('Signed out. Installers are hidden again.');
     } catch (error) {
-      setDownloadStatus(`Odhlášení se nepodařilo dokončit: ${error.message}`, 'error');
+      setDownloadStatus(`Sign-out could not be completed: ${error.message}`, 'error');
     } finally {
       localStorage.removeItem(MOVLY_DOWNLOAD_TOKEN);
       clearAccount();
@@ -906,10 +908,10 @@
     if (!button) return;
     const originalText = button.textContent;
     button.disabled = true;
-    button.textContent = 'Připravuji odkaz...';
+    button.textContent = 'Preparing link...';
     try {
       const data = await downloadApi(`/api/downloads/${encodeURIComponent(button.dataset.downloadId)}/link`, { method: 'POST' });
-      setDownloadStatus(`Download odkaz platí ${data.expiresInSeconds || 300} sekund. Stahování začíná...`, 'ok');
+      setDownloadStatus(`The download link is valid for ${data.expiresInSeconds || 300} seconds. Starting download...`, 'ok');
       window.location.href = data.url;
     } catch (error) {
       setDownloadStatus(error.message, 'error');
@@ -921,7 +923,7 @@
 
   (async function restoreDownloadSession() {
     if (!localStorage.getItem(MOVLY_DOWNLOAD_TOKEN)) return;
-    setDownloadStatus('Ověřuji uložené přihlášení...');
+    setDownloadStatus('Verifying saved sign-in...');
     try {
       const session = await downloadApi('/api/auth/me');
       await applySession(session);

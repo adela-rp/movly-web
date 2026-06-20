@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Smazání účtu — Movly</title>
-<meta name="description" content="Jak požádat o smazání účtu Movly a souvisejících dat — postup, které údaje budou smazány a které dočasně uchovány." />
+<title>Account deletion — Movly</title>
+<meta name="description" content="How to request deletion of your Movly account and related data — the procedure, which data is deleted and which is kept temporarily." />
 <meta name="theme-color" content="#0A0A12" />
-<link rel="icon" type="image/svg+xml" href="assets/movly-icon.svg" />
+<link rel="icon" type="image/svg+xml" href="../assets/movly-icon.svg" />
+<link rel="alternate" hreflang="cs" href="../delete-account.html" />
+<link rel="alternate" hreflang="en" href="delete-account.html" />
 <style>
   :root{
     --bg-base:#0A0A12;--bg-surface:#14141F;--bg-raised:#1C1C2A;
@@ -31,12 +33,12 @@
   nav{max-width:840px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.5px;color:#fff}
   .brand svg{height:30px;width:auto;display:block}
-  .back{color:var(--text-secondary);font-size:15px;font-weight:500}
-  .back:hover{color:#fff;text-decoration:none}
   .nav-right{display:flex;align-items:center;gap:18px}
   .lang-switch{display:inline-flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden}
   .lang-switch a{padding:5px 11px;font-size:13px;font-weight:700;color:var(--text-secondary);text-decoration:none}
   .lang-switch a.active{background:var(--grad-brand);color:#fff}
+  .back{color:var(--text-secondary);font-size:15px;font-weight:500}
+  .back:hover{color:#fff;text-decoration:none}
 
   main{max-width:840px;margin:0 auto;padding:56px 24px 80px;position:relative;z-index:1}
   h1{color:#fff;font-size:clamp(32px,5vw,46px);font-weight:900;letter-spacing:-1.2px;margin-bottom:10px}
@@ -54,7 +56,6 @@
   th{color:#fff;font-weight:700;background:var(--bg-surface)}
   td:first-child{color:#fff;font-weight:500}
 
-  /* numbered steps */
   ol.steps{list-style:none;counter-reset:s;margin:6px 0 8px;padding:0}
   ol.steps li{counter-increment:s;position:relative;padding:4px 0 18px 52px;margin:0}
   ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;
@@ -84,58 +85,58 @@
       <span>Movly</span>
     </a>
     <div class="nav-right">
-      <span class="lang-switch"><a class="active" href="delete-account.html">CS</a><a href="en/delete-account.html">EN</a></span>
-      <a class="back" href="index.html">← Zpět na web</a>
+      <span class="lang-switch"><a href="../delete-account.html">CS</a><a class="active" href="delete-account.html">EN</a></span>
+      <a class="back" href="index.html">← Back to site</a>
     </div>
   </nav>
 </header>
 
 <main>
-  <h1>Smazání účtu</h1>
-  <p class="updated">Naposledy aktualizováno: 17. června 2026</p>
+  <h1>Account deletion</h1>
+  <p class="updated">Last updated: 17 June 2026</p>
 
-  <p class="lede">Tato stránka popisuje, jak můžeš v aplikaci <strong>Movly</strong> požádat o smazání svého účtu a všech souvisejících dat, jaké údaje budou smazány a které jsou po omezenou dobu uchovány.</p>
+  <p class="lede">This page explains how to request deletion of your <strong>Movly</strong> account and all related data, which data will be deleted and which is kept for a limited time.</p>
 
-  <h2><span class="grad-text">Jak požádat o smazání účtu</span></h2>
-  <p>Žádost o smazání účtu Movly podáš e-mailem. Postupuj takto:</p>
+  <h2><span class="grad-text">How to request account deletion</span></h2>
+  <p>You request deletion of your Movly account by email. Here's how:</p>
   <ol class="steps">
-    <li><strong>Napiš nám e-mail</strong> na adresu <a href="mailto:cinelog@outlook.com?subject=Movly%20%E2%80%93%20%C5%BD%C3%A1dost%20o%20smaz%C3%A1n%C3%AD%20%C3%BA%C4%8Dtu">cinelog@outlook.com</a> z e-mailové adresy, kterou máš v Movly registrovanou.</li>
-    <li><strong>Do předmětu uveď</strong> „Žádost o smazání účtu Movly".</li>
-    <li><strong>Do těla zprávy napiš</strong> svou registrační e-mailovou adresu (případně jméno profilu), ať tě dokážeme jednoznačně identifikovat.</li>
-    <li><strong>Počkej na potvrzení</strong> — žádost zpracujeme a údaje smažeme <strong>do 30 dnů</strong> od ověření. O dokončení tě budeme informovat e-mailem.</li>
+    <li><strong>Email us</strong> at <a href="mailto:cinelog@outlook.com?subject=Movly%20%E2%80%93%20account%20deletion%20request">cinelog@outlook.com</a> from the email address registered with Movly.</li>
+    <li><strong>Use the subject</strong> "Account deletion request".</li>
+    <li><strong>In the body, include</strong> your registered email address (and profile name if relevant), so we can identify you unambiguously.</li>
+    <li><strong>Wait for confirmation</strong> — we'll process the request and delete your data <strong>within 30 days</strong> of verification. We'll let you know by email once it's done.</li>
   </ol>
 
   <div class="box" style="text-align:center">
-    <a class="cta" href="mailto:cinelog@outlook.com?subject=Movly%20%E2%80%93%20%C5%BD%C3%A1dost%20o%20smaz%C3%A1n%C3%AD%20%C3%BA%C4%8Dtu&body=Moje%20registra%C4%8Dn%C3%AD%20e-mailov%C3%A1%20adresa%3A%20">✉️ Požádat o smazání účtu</a>
-    <div class="mailrow">nebo napiš ručně na <a href="mailto:cinelog@outlook.com">cinelog@outlook.com</a></div>
+    <a class="cta" href="mailto:cinelog@outlook.com?subject=Movly%20%E2%80%93%20account%20deletion%20request&body=My%20registered%20email%20address%3A%20">✉️ Request account deletion</a>
+    <div class="mailrow">or email us manually at <a href="mailto:cinelog@outlook.com">cinelog@outlook.com</a></div>
   </div>
 
-  <h2>Které údaje budou smazány</h2>
-  <p>Po zpracování žádosti <strong>trvale a nevratně</strong> odstraníme z našich aktivních systémů zejména:</p>
+  <h2>What will be deleted</h2>
+  <p>Once the request is processed, we <strong>permanently and irreversibly</strong> remove the following from our active systems:</p>
   <ul>
-    <li>tvůj <strong>účet</strong> a přihlašovací údaje (e-mailová adresa, heslo),</li>
-    <li>všechny tvé <strong>profily</strong> a jejich názvy,</li>
-    <li>tvé <strong>seznamy, playlisty a oblíbené tituly</strong>,</li>
-    <li><strong>postup ve sledování</strong> (co máš za sebou) a předvolby,</li>
-    <li>údaje spojené přímo s tvým účtem.</li>
+    <li>your <strong>account</strong> and sign-in credentials (email address, password),</li>
+    <li>all your <strong>profiles</strong> and their names,</li>
+    <li>your <strong>lists, playlists and favorite titles</strong>,</li>
+    <li>your <strong>watch progress</strong> (what you've finished) and preferences,</li>
+    <li>data directly associated with your account.</li>
   </ul>
 
-  <h2>Které údaje uchováváme a jak dlouho</h2>
-  <p>V zájmu bezpečnosti, obnovy ze záloh a splnění zákonných povinností můžeme po omezenou dobu uchovat tyto údaje:</p>
+  <h2>What we keep and for how long</h2>
+  <p>For security, recovery from backups and to meet legal obligations, we may keep the following for a limited time:</p>
   <table>
-    <tr><th>Typ dat</th><th>Doba uchování</th></tr>
-    <tr><td>Záložní kopie systémů</td><td>Maximálně 30 dnů od smazání, poté jsou zálohy s tvými daty nevratně přepsány.</td></tr>
-    <tr><td>Provozní a bezpečnostní logy</td><td>Maximálně 90 dnů; neslouží k tvé identifikaci a po uplynutí lhůty se mažou.</td></tr>
-    <tr><td>Údaje vyžadované zákonem</td><td>Pouze pokud to ukládá právní předpis, a jen po nezbytně nutnou dobu.</td></tr>
+    <tr><th>Data type</th><th>Retention period</th></tr>
+    <tr><td>System backups</td><td>Up to 30 days after deletion, after which backups containing your data are irreversibly overwritten.</td></tr>
+    <tr><td>Operational and security logs</td><td>Up to 90 days; they don't identify you and are deleted once the period ends.</td></tr>
+    <tr><td>Data required by law</td><td>Only where required by a legal regulation, and only for the strictly necessary period.</td></tr>
   </table>
-  <p>Údaje, které zůstávají jen ve tvém zařízení (např. historie hledání a nastavení), se odstraní odinstalováním aplikace.</p>
+  <p>Data that stays only on your device (e.g. search history and settings) is removed by uninstalling the app.</p>
 
-  <h2>Kontakt</h2>
-  <p>Máš-li jakékoli dotazy ke smazání účtu nebo k ochraně soukromí, napiš nám na <a href="mailto:cinelog@outlook.com">cinelog@outlook.com</a>. Více informací najdeš v <a href="privacy.html">zásadách ochrany soukromí</a>.</p>
+  <h2>Contact</h2>
+  <p>If you have any questions about account deletion or privacy, email us at <a href="mailto:cinelog@outlook.com">cinelog@outlook.com</a>. You can find more in our <a href="privacy.html">privacy policy</a>.</p>
 </main>
 
 <footer>
-  © 2026 Movly · <a href="index.html">Web</a> · <a href="privacy.html">Zásady ochrany soukromí</a>
+  © 2026 Movly · <a href="index.html">Site</a> · <a href="privacy.html">Privacy policy</a>
 </footer>
 </body>
 </html>

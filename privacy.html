@@ -33,6 +33,10 @@
   .brand svg{height:30px;width:auto;display:block}
   .back{color:var(--text-secondary);font-size:15px;font-weight:500}
   .back:hover{color:#fff;text-decoration:none}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .lang-switch{display:inline-flex;border:1px solid rgba(255,255,255,.14);border-radius:999px;overflow:hidden}
+  .lang-switch a{padding:5px 11px;font-size:13px;font-weight:700;color:var(--text-secondary);text-decoration:none}
+  .lang-switch a.active{background:var(--grad-brand);color:#fff}
 
   main{max-width:840px;margin:0 auto;padding:56px 24px 80px;position:relative;z-index:1}
   h1{color:#fff;font-size:clamp(32px,5vw,46px);font-weight:900;letter-spacing:-1.2px;margin-bottom:10px}
@@ -69,7 +73,10 @@
       </svg>
       <span>Movly</span>
     </a>
-    <a class="back" href="index.html">← Zpět na web</a>
+    <div class="nav-right">
+      <span class="lang-switch"><a class="active" href="privacy.html">CS</a><a href="en/privacy.html">EN</a></span>
+      <a class="back" href="index.html">← Zpět na web</a>
+    </div>
   </nav>
 </header>
 
